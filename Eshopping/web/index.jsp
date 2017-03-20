@@ -1,3 +1,9 @@
+<%-- 
+    Document   : index
+    Created on : Mar 2, 2017, 6:58:42 PM
+    Author     : iamsu
+--%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -52,7 +58,7 @@
             <img src='http://img01.ibnlive.in/ibnlive/uploads/2015/07/online-shopping.jpg' alt="Login Image" style="width: 48%;"/>
             <fieldset style="width: 45%;float: right">
                 <legend>Sign Up here</legend>
-                <form action="User.do" method="post">
+                <form action="Home" method="post">
                 <table border="0" align='center'>
                     <thead>
                         <tr>
