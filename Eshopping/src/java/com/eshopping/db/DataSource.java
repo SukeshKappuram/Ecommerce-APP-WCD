@@ -27,7 +27,6 @@ public class DataSource {
     }
 
     public PreparedStatement getPs() {
-        
         return ps;
     }
 

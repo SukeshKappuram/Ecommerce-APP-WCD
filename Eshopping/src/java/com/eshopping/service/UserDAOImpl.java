@@ -36,6 +36,7 @@ public class UserDAOImpl implements UserDAO{
         ds.getPs().setString(6,u.getPassword());
         ds.getPs().executeUpdate();
         ds.getCon().commit();
+        ds.getCon().close();
         }catch(Exception e){
             u.error=e.toString();
         }
@@ -47,6 +48,7 @@ public class UserDAOImpl implements UserDAO{
         try{
             ds.setCon();
             ds.setPs("select * from Users where mailId= ?");
+            ds.getPs().setString(1, u.getMailId());
             ResultSet rs= ds.getPs().executeQuery();
             if(rs.next()){
                 if(rs.getString("password").equals(u.getPassword())){

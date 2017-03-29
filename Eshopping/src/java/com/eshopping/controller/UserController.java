@@ -14,9 +14,11 @@ import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,12 +48,17 @@ public class UserController extends HttpServlet {
         User user;
         RequestDispatcher rd=getServletContext().getRequestDispatcher("/index.html");
         if(req.contains("Login")){
-                rd=getServletContext().getRequestDispatcher("/Welcome.jsp");
-            }
             user=new User(mailId,password);
-            ud.readUser(user);
-            if(user.getId()!=0){
-        }else if(req.contains("index")){
+            user=ud.readUser(user);
+            if(user.getId()!=0){  
+                Cookie c=new Cookie("mail",user.getMailId());
+                response.addCookie(c);
+                HttpSession session=request.getSession();
+                session.setAttribute("user", user);
+                  response.sendRedirect("Welcome.jsp?n="+user.getFirstName());
+                }
+            }
+            else if(req.contains("index")){
             String firstName=request.getParameter("firstName");
             String middleName=request.getParameter("middleName");
             String lastName=request.getParameter("lastName");
