@@ -46,7 +46,7 @@ public class UserController extends HttpServlet {
         String password=request.getParameter("password");
         UserDAO ud=new UserDAOImpl();
         User user;
-        RequestDispatcher rd=getServletContext().getRequestDispatcher("/index.html");
+        RequestDispatcher rd=getServletContext().getRequestDispatcher("/index.jsp");
         if(req.contains("Login")){
             user=new User(mailId,password);
             user=ud.readUser(user);
@@ -57,6 +57,10 @@ public class UserController extends HttpServlet {
                 session.setAttribute("user", user);
                   response.sendRedirect("Welcome.jsp?n="+user.getFirstName());
                 }
+            else{
+                out.println("User Id or password Incorrect");
+                rd.include(request, response);
+            }
             }
             else if(req.contains("index")){
             String firstName=request.getParameter("firstName");
@@ -70,8 +74,9 @@ public class UserController extends HttpServlet {
                 out.print(user.error);
                 rd.include(request, response);
             }
+            rd.forward(request, response);
         }
-        rd.forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

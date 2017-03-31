@@ -1,58 +1,59 @@
+<%-- 
+    Document   : index
+    Created on : Mar 30, 2017, 7:20:13 PM
+    Author     : iamsu
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <style>
-            .header{
-                width: 100%;
-                height: 50px;
-                background-color: Orange;
-                font-size: 50px;
-                text-align: center;
-                color: blue;
-                padding: 15px 0px 15px 0px;
-            }
-            .content{
-                width: 100%;
-            }
-            .footer{
-                width: 100%;
-                height: 30px;
-                background-color: Orange;
-                position: fixed;
-                bottom: 0px;
-                text-align: center;
-                color: blue;
-            }
-            nav{
-                background-color: brown;
-                height: 30px;
-                text-align: center;
-            }
-            nav a{
-                font-size: 15px;
-                background-color: wheat;
-                padding: 5px 45px 5px 45px;
-            }
-        </style>
+        
     </head>
     <body>
-        <div class='header'>
-            Flipcart
-        </div>
-            <nav>
-                <a href='#'>Home</a>
-                <a href='#'>About</a>
-                <a href='#'>Contact Us</a>
-                <a href='#'>Feedback</a>
-            </nav>
         
+        <%@include file="header.jsp" %>
+       
         <div class='content'>
             <img src='http://img01.ibnlive.in/ibnlive/uploads/2015/07/online-shopping.jpg' alt="Login Image" style="width: 48%;"/>
-            <fieldset style="width: 45%;float: right">
+            <c:if test="${not empty param.shw}">
+            <div style="width: 45%;float: right">
+        <form action="User.do" method="post">
+            <fieldset>
+                <legend>Login</legend>
+            <table border="0" align='center'>
+                    <thead>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </thead>
+                        <tr>
+                            <td>
+                                <input type="email" name="mailId" placeholder="Mail Id" required="required"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                 <input type="password" name="password" placeholder="Password" required="required"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               <input type="submit" value="Login" />
+                               <input type="reset" value="Cancel" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+            </form>
+        </c:if>
+        <c:if test="${empty param.shw}">
+        <form action="User.do" method="post">
+            <fieldset>
                 <legend>Sign Up here</legend>
-                <form action="User.do" method="post">
                 <table border="0" align='center'>
                     <thead>
                         <tr>
@@ -95,11 +96,13 @@
                         </tr>
                     </tbody>
                 </table>
-            </form>
-            </fieldset>
+        </fieldset>    
+        </form>
+            </c:if>
+         </div>   
         </div>
-        <div class='footer'>
-            &copy Copyright to NIIT. All rights received 2017
-        </div>
+        
+        <%@include file="footer.jsp" %>
     </body>
 </html>
+

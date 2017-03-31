@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/web/index.jsp</file>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/web/header.jsp</file>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/web/Welcome.jsp</file>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/web/footer.jsp</file>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/controller/UserController.java</file>
+        </group>
     </open-files>
 </project-private>
