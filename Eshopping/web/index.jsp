@@ -13,9 +13,10 @@
         
     </head>
     <body>
-        
         <%@include file="header.jsp" %>
-       
+        <c:if test="${not empty user}">
+            <% response.sendRedirect("Welcome.jsp"); %>
+        </c:if>
         <div class='content'>
             <img src='http://img01.ibnlive.in/ibnlive/uploads/2015/07/online-shopping.jpg' alt="Login Image" style="width: 48%;"/>
             <c:if test="${not empty param.shw}">
@@ -101,8 +102,6 @@
             </c:if>
          </div>   
         </div>
-        
         <%@include file="footer.jsp" %>
     </body>
 </html>
-

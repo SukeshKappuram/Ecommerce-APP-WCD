@@ -16,6 +16,6 @@
             session.setAttribute("user", null);
         %>
         You have logged out Successfully , To Re-login click
-        <a href="Login.html">here</a>
+        <a href="index.jsp?shw=Login">here</a>
     </body>
 </html>

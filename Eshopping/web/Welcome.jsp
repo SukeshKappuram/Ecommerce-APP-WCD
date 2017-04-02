@@ -14,8 +14,11 @@
     </head>
     <body>
         <%@include file="header.jsp" %>
+        <c:if test="${empty user}">
+            <% response.sendRedirect("index.jsp?shw=Login"); %>
+        </c:if>
         <div class='content'>
-            <p>Hi <%=user.getFirstName()+" "+user.getLastName()%> !!</p>
+            <p>Hi ${user.firstName} ${user.lastName} !!</p>
             <%=request.getParameter("n")%>
             
             <%

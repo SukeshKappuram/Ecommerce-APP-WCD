@@ -47,9 +47,6 @@
         </style>
     </head>
     <body>
-        <%
-            User user=(User)session.getAttribute("user");
-        %>
         <div class='header'>
             Flipcart
         </div>
@@ -57,7 +54,7 @@
                 <a href='#'>Home</a>
                 <a href='#'>About</a>
                 <a href='#'>Contact Us</a>
-                <a href='#'>Feedback ${param.shw}</a>
+                <a href='#'>Feedback</a>
                 
                 <c:if test="${empty user and empty param.shw}">
                     <a href='index.jsp?shw=Login'>Login</a>
@@ -68,6 +65,7 @@
                 <c:if test="${not empty user}">
                         <a href='logout.jsp'>Logout</a>
                 </c:if>
+                        
             </nav>
     </body>
 </html>
