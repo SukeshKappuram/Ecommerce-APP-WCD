@@ -18,8 +18,8 @@
             <% response.sendRedirect("index.jsp?shw=Login"); %>
         </c:if>
         <div class='content'>
-            <p>Hi ${user.firstName} ${user.lastName} !!</p>
-            <%=request.getParameter("n")%>
+            
+            
             
             <%
                 Cookie[] cookies=request.getCookies();

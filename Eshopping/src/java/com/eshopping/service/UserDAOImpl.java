@@ -40,6 +40,7 @@ public class UserDAOImpl implements UserDAO{
         }catch(Exception e){
             u.error=e.toString();
         }
+        u=readUser(u);
         return u;
     }
 

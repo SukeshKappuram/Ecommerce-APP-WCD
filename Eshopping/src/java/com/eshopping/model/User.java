@@ -21,6 +21,10 @@ public class User {
 
     public String error;
     
+    //Roles
+    private Role[] roles;
+    
+    
     public User(String firstName, String middleName, String lastName, String mailId, String phoneNumber, String password) {
         this.firstName = firstName;
         this.middleName = middleName;
@@ -90,7 +94,13 @@ public class User {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
-    
+
+    public Role[] getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Role[] roles) {
+        this.roles = roles;
+    }
     
 }

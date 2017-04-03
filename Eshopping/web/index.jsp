@@ -14,13 +14,10 @@
     </head>
     <body>
         <%@include file="header.jsp" %>
-        <c:if test="${not empty user}">
-            <% response.sendRedirect("Welcome.jsp"); %>
-        </c:if>
         <div class='content'>
             <img src='http://img01.ibnlive.in/ibnlive/uploads/2015/07/online-shopping.jpg' alt="Login Image" style="width: 48%;"/>
-            <c:if test="${not empty param.shw}">
-            <div style="width: 45%;float: right">
+            <c:if test="${empty user and not empty param.shw}">
+            <div id="Home" style="width: 45%;float: right">
         <form action="User.do" method="post">
             <fieldset>
                 <legend>Login</legend>
@@ -51,7 +48,7 @@
             </fieldset>
             </form>
         </c:if>
-        <c:if test="${empty param.shw}">
+        <c:if test="${empty user and empty param.shw}">
         <form action="User.do" method="post">
             <fieldset>
                 <legend>Sign Up here</legend>
@@ -101,6 +98,15 @@
         </form>
             </c:if>
          </div>   
+            <div id="About">
+                
+            </div>
+            <div id="Contact">
+                
+            </div>
+            <div id="Feedback">
+                
+            </div>
         </div>
         <%@include file="footer.jsp" %>
     </body>

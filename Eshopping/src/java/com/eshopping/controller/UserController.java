@@ -6,8 +6,11 @@
 
 package com.eshopping.controller;
 
+import com.eshopping.DAO.RoleDAO;
 import com.eshopping.DAO.UserDAO;
+import com.eshopping.model.Role;
 import com.eshopping.model.User;
+import com.eshopping.service.RoleDAOImpl;
 import com.eshopping.service.UserDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -45,6 +48,7 @@ public class UserController extends HttpServlet {
         String mailId=request.getParameter("mailId");
         String password=request.getParameter("password");
         UserDAO ud=new UserDAOImpl();
+        RoleDAO rld=new RoleDAOImpl();
         User user;
         RequestDispatcher rd=getServletContext().getRequestDispatcher("/index.jsp");
         if(req.contains("Login")){
@@ -55,7 +59,10 @@ public class UserController extends HttpServlet {
                 response.addCookie(c);
                 HttpSession session=request.getSession();
                 session.setAttribute("user", user);
-                  response.sendRedirect("Welcome.jsp?n="+user.getFirstName());
+                Role r=new Role(user.getId());
+                Role[] roles=rld.readRole(r);
+                user.setRoles(roles);
+                response.sendRedirect("Welcome.jsp?r="+roles[0].getRoleName());
                 }
             else{
                 out.println("User Id or password Incorrect");
@@ -67,9 +74,13 @@ public class UserController extends HttpServlet {
             String middleName=request.getParameter("middleName");
             String lastName=request.getParameter("lastName");
             String phoneNumber=request.getParameter("phoneNumber");
-            
+            out.print("Create User Obj <br/>");
             user=new User(firstName, "y", lastName, mailId, phoneNumber, password);
+            out.print("Save User");
             user=ud.createUser(user);
+            out.print("Done User");
+            Role r=new Role("Customer",user.getId());
+            rld.createRole(r);
             if(user.error!=null){
                 out.print(user.error);
                 rd.include(request, response);
