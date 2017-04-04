@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Eshop</title>
+        <title>E-shop</title>
         <style>
             .header{
                 width: 100%;
@@ -76,15 +76,14 @@
                 </c:if>
                 <c:if test="${not empty user}">
                     <c:if test="${user.roles[1].roleName eq 'Seller' or user.roles[2].roleName eq 'Seller' }">
-                        <a href='logout.jsp'>Manage Store</a>
+                        <a href='manage.jsp'>Manage Store</a>
                     </c:if>
                     <c:if test="${user.roles[1].roleName=='Admin' or user.roles[2].roleName=='Admin' }">
-                        <a href='logout.jsp'>Manage Site</a>
+                        <a href='manage.jsp'>Manage Site</a>
                     </c:if>
                         <a href='logout.jsp'>Logout</a>
                         <p class="Logged">Hi ${user.firstName} ${user.lastName} !! <br/><i>You are logged in as ${param.r}</i></p>
                 </c:if>
-                        
             </nav>
     </body>
 </html>

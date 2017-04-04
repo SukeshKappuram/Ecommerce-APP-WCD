@@ -7,16 +7,18 @@
 package com.eshopping.DAO;
 
 import com.eshopping.model.Category;
+import com.eshopping.model.Product;
 import java.util.List;
 
 /**
  *
  * @author iamsu
  */
-public interface CategoryDAO {
-    public void create(Category c);
-    public Category read(Category c);
-    public List<Category> read();
-    public void update(Category c);
-    public void delete(Category c);
+public interface ProductDAO {
+    public void create(Product c);
+    public Product read(Product c);
+    public List<Product> read(Category c);
+    public List<Product> read();
+    public void update(Product c);
+    public void delete(Product c);
 }
