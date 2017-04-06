@@ -14,6 +14,8 @@ import com.eshopping.service.CategoryDAOImpl;
 import com.eshopping.service.ProductDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,19 +47,24 @@ public class ProductController extends HttpServlet {
         ProductDAO pd=new ProductDAOImpl();
         CategoryDAO cd=new CategoryDAOImpl();
         Product p;
+        Category c=new Category(0);
+        List<Category> categories=cd.read();
         String mode=request.getParameter("m");
+        String name="",description="",manufactureName="";
+        float price=0;int categoryId=0;
         out.println(mode);
         if(mode.equals("s")){
             int id=Integer.parseInt(request.getParameter("id"));
-            Category c=new Category(id);
-            session.setAttribute("Products",pd.read(c));
-            session.setAttribute("categories",cd.read());
+            c=new Category(id);
+            session.setAttribute("products",pd.read(c));
         }else{
-        String name=request.getParameter("name");
-        String description=request.getParameter("description");
-        float price=Float.parseFloat(request.getParameter("price"));
-        int categoryId=Integer.parseInt(request.getParameter("categoryId"));
-        String manufactureName=request.getParameter("manufacturename");
+        try{
+            name=request.getParameter("name");
+            description=request.getParameter("description");
+            price=Float.parseFloat(request.getParameter("price"));
+            categoryId=Integer.parseInt(request.getParameter("categoryId"));
+            manufactureName=request.getParameter("manufacturename");
+        }catch(Exception e){}
         if(mode.equals("c")){
             p=new Product(name, description, price, categoryId, manufactureName);
             pd.create(p);
@@ -72,12 +79,21 @@ public class ProductController extends HttpServlet {
             if(mode.equals("e")){
                 p=new Product(id);
                 p=pd.read(p);
-                session.setAttribute("category",p);
+                session.setAttribute("product",p);
+                c=new Category(p.getCategoryId());
+                session.setAttribute("category",cd.read(c));
+                for(int i=0;i<categories.size();i++){
+                if(categories.get(i).getId()==c.getId()){
+                    categories.remove(i);
+                }
+        }
             }else if(mode.equals("u")){
                 p=new Product(name, description, price, categoryId, manufactureName);
                 p.setId(id);
                 pd.update(p);
-                session.setAttribute("product",p);
+                c=new Category(p.getCategoryId());
+                session.setAttribute("product",null);
+                session.setAttribute("category",null);
             }else{
                 p=new Product(id);
                 out.print("Delete"+id);
@@ -85,6 +101,8 @@ public class ProductController extends HttpServlet {
             }
         }
         }
+        session.setAttribute("categories",categories);
+        session.setAttribute("products",pd.read(c));
         response.sendRedirect("Product.jsp");
     }
 

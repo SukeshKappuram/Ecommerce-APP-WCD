@@ -22,6 +22,9 @@
                         <textarea name="description" rows="4" cols="20" placeholder="Product Description">${product.description}</textarea><br/><br/>
                         <input type="number" name="price" placeholder="Product Price" value="${product.price}" /><br/><br/>
                         <select name="categoryId">
+                            <c:if test="${not empty category}">
+                                <option value="${category.id}">${category.name}</option>
+                            </c:if>
                             <c:forEach var="c" items="${categories}">
                                 <option value="${c.id}">${c.name}</option>
                             </c:forEach>
