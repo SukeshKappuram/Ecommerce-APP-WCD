@@ -14,11 +14,13 @@
         <group>
             <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/service/ProductDAOImpl.java</file>
             <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/DAO/ProductDetailsDAO.java</file>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/web/Category.jsp</file>
             <file>file:/D:/Ecomerce%20Project/Eshopping/web/ProductDetails.jsp</file>
             <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/service/ProductDetailsDAOImpl.java</file>
             <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/controller/ProductDetailsController.java</file>
             <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/model/ProductDetails.java</file>
-            <file>file:/D:/Ecomerce%20Project/Eshopping/web/Product.jsp</file>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/controller/ProductController.java</file>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/controller/UserController.java</file>
         </group>
     </open-files>
 </project-private>

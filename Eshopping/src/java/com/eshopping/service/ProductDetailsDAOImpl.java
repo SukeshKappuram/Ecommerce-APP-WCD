@@ -11,7 +11,9 @@ import com.eshopping.db.DataSource;
 import com.eshopping.model.Product;
 import com.eshopping.model.ProductDetails;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,11 +25,11 @@ public class ProductDetailsDAOImpl implements ProductDetailsDAO{
     DataSource ds=new DataSource();
     
     @Override
-    public void create(ProductDetails p) {
-        try{
+    public void create(ProductDetails p) throws SQLException{
+        
         ds.setCon();
-        ds.setPs("insert into ProductDetails(sno,productId,manufactureDate,expieryDate,size,color,sellerId) values (?,?,?,?,?,?,?)");
-        ds.getPs().setInt(1,p.getSerialNumber());
+        ds.setPs("insert into ProductDetails(serialNumber,productId,manufactureDate,expieryDate,size,color,sellerId) values (?,?,?,?,?,?,?)");
+        ds.getPs().setString(1,String.valueOf(p.getSerialNumber()));
         ds.getPs().setInt(2,p.getProductId());
         ds.getPs().setDate(3,p.getManufactureDate());
         ds.getPs().setDate(4,p.getExpieryDate());
@@ -37,10 +39,16 @@ public class ProductDetailsDAOImpl implements ProductDetailsDAO{
         ds.getPs().executeUpdate();
         ds.getCon().commit();
         ds.getCon().close();
-        }catch(Exception e){
         }
-    }
 
+    public static void main(String[] arg) throws SQLException{
+        ProductDetailsDAOImpl pd=new ProductDetailsDAOImpl();
+        for(ProductDetails p:pd.read()){
+            System.out.println(p.getSerialNumber());
+        }
+        
+    }
+    
     @Override
     public ProductDetails read(ProductDetails pd) {
          try{
@@ -93,8 +101,7 @@ public class ProductDetailsDAOImpl implements ProductDetailsDAO{
             ds.setPs("select * from ProductDetails");
              ResultSet rs= ds.getPs().executeQuery();
             while(rs.next()){
-                   ProductDetails p=new ProductDetails(rs.getInt("Id"));
-                   p.setSerialNumber(rs.getInt("sno"));
+                   ProductDetails p=new ProductDetails(rs.getInt("serialNumber"));
                    p.setProductId(rs.getInt("ProductId"));
                    p.setManufactureDate(rs.getDate("manufactureDate"));
                    p.setExpieryDate(rs.getDate("expieryDate"));
@@ -120,7 +127,7 @@ public class ProductDetailsDAOImpl implements ProductDetailsDAO{
         ds.getPs().setString(4,p.getSize());
         ds.getPs().setString(5,p.getColor());
         ds.getPs().setInt(6,p.getSellerId());
-        ds.getPs().setInt(7,p.getSerialNumber());
+        ds.getPs().setLong(7,p.getSerialNumber());
         ds.getPs().executeUpdate();
         ds.getCon().commit();
         ds.getCon().close();
@@ -133,7 +140,7 @@ public class ProductDetailsDAOImpl implements ProductDetailsDAO{
         try{
         ds.setCon();
         ds.setPs("Delete from ProductDetails where sno=?");
-        ds.getPs().setInt(1,p.getSerialNumber());
+        ds.getPs().setLong(1,p.getSerialNumber());
         ds.getPs().executeUpdate();
         ds.getCon().commit();
         ds.getCon().close();

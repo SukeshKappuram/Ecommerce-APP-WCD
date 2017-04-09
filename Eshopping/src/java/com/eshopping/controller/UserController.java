@@ -7,11 +7,15 @@
 package com.eshopping.controller;
 
 import com.eshopping.DAO.CategoryDAO;
+import com.eshopping.DAO.ProductDAO;
+import com.eshopping.DAO.ProductDetailsDAO;
 import com.eshopping.DAO.RoleDAO;
 import com.eshopping.DAO.UserDAO;
 import com.eshopping.model.Role;
 import com.eshopping.model.User;
 import com.eshopping.service.CategoryDAOImpl;
+import com.eshopping.service.ProductDAOImpl;
+import com.eshopping.service.ProductDetailsDAOImpl;
 import com.eshopping.service.RoleDAOImpl;
 import com.eshopping.service.UserDAOImpl;
 import java.io.IOException;
@@ -51,6 +55,8 @@ public class UserController extends HttpServlet {
         String password=request.getParameter("password");
         UserDAO ud=new UserDAOImpl();
         RoleDAO rld=new RoleDAOImpl();
+        ProductDAO pd=new ProductDAOImpl();
+        ProductDetailsDAO pdt=new ProductDetailsDAOImpl();
         User user;
         RequestDispatcher rd=getServletContext().getRequestDispatcher("/index.jsp");
         if(req.contains("Login")){
@@ -66,8 +72,10 @@ public class UserController extends HttpServlet {
                 user.setRoles(roles);
                 CategoryDAO cd=new CategoryDAOImpl();
                 session.setAttribute("categories",cd.read());
+                session.setAttribute("products", pd.read());
+                session.setAttribute("productDetails",pdt.read());
                 response.sendRedirect("Welcome.jsp?r="+roles[0].getRoleName());
-                }
+            }
             else{
                 out.println("User Id or password Incorrect");
                 rd.include(request, response);

@@ -13,7 +13,7 @@ import java.sql.Date;
  * @author iamsu
  */
 public class ProductDetails {
-    private int serialNumber;
+    private long serialNumber;
     private int productId;
     private Date manufactureDate;
     private Date expieryDate;
@@ -21,7 +21,7 @@ public class ProductDetails {
     private String color;
     private int sellerId;
 
-    public ProductDetails(int serialNumber, int productId, Date manufactureDate, Date expieryDate, String size, String color, int sellerId) {
+    public ProductDetails(long serialNumber, int productId, Date manufactureDate, Date expieryDate, String size, String color, int sellerId) {
         this.serialNumber = serialNumber;
         this.productId = productId;
         this.manufactureDate = manufactureDate;
@@ -31,15 +31,15 @@ public class ProductDetails {
         this.sellerId = sellerId;
     }
 
-    public ProductDetails(int serialNumber) {
+    public ProductDetails(long serialNumber) {
         this.serialNumber = serialNumber;
     }
 
-    public int getSerialNumber() {
+    public long getSerialNumber() {
         return serialNumber;
     }
 
-    public void setSerialNumber(int serialNumber) {
+    public void setSerialNumber(long serialNumber) {
         this.serialNumber = serialNumber;
     }
 

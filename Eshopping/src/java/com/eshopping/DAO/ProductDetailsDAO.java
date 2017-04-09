@@ -8,6 +8,7 @@ package com.eshopping.DAO;
 
 import com.eshopping.model.ProductDetails;
 import com.eshopping.model.Product;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
  * @author iamsu
  */
 public interface ProductDetailsDAO {
-    public void create(ProductDetails p);
+    public void create(ProductDetails p) throws SQLException;
     public ProductDetails read(ProductDetails p);
     public List<ProductDetails> read(Product p);
     public List<ProductDetails> read();
