@@ -18,18 +18,7 @@
             <% response.sendRedirect("index.jsp?shw=Login"); %>
         </c:if>
         <div class='content'>
-            
-            
-            
-            <%
-                Cookie[] cookies=request.getCookies();
-                for(Cookie c:cookies){
-                    if(c.getName().equals("mail")){
-                        out.println(c.getValue());
-                    }
-                }
-            %>
-           <c 
+            <%@include file="ViewProducts.jsp" %>
         </div>
             <%@include file="footer.jsp" %>
     </body>
