@@ -6,14 +6,23 @@
 
 package com.eshopping.model;
 
+import java.io.Serializable;
+import javax.persistence.*;
+
 /**
  *
  * @author iamsu
  */
-public class Category {
+@Entity
+public class Category implements Serializable{
+
+    @Id
     private int id;
     private String name;
     private String description;
+
+    public Category() {
+    }
 
     public Category(String name, String description) {
         this.name = name;

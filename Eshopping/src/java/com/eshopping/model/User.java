@@ -39,6 +39,12 @@ public class User {
         this.password = password;
     }
 
+    public User(int Id) {
+        this.Id = Id;
+    }
+    
+    
+
     public String getPassword() {
         return password;
     }

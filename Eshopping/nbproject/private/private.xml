@@ -11,6 +11,12 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/db/DataConnector.java</file>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/db/JPAExample.java</file>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/model/Product.java</file>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/web/WEB-INF/persistence.xml</file>
+            <file>file:/D:/Ecomerce%20Project/Eshopping/src/java/com/eshopping/model/Category.java</file>
+        </group>
     </open-files>
 </project-private>

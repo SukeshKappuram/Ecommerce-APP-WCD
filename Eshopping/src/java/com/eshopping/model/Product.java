@@ -6,11 +6,14 @@
 
 package com.eshopping.model;
 
+import java.io.Serializable;
+import javax.persistence.*;
+
 /**
  *
  * @author iamsu
  */
-public class Product {
+public class Product{
     private int id;
     private String name;
     private String description;
@@ -18,6 +21,9 @@ public class Product {
     private int categoryId;
     private String manufacturename;
     private String image;
+
+    public Product() {
+    }
 
     public Product(String name, String description, float price, int categoryId, String manufacturename) {
         this.name = name;

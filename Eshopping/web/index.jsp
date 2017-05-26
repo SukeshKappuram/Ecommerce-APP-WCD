@@ -108,6 +108,9 @@
                 
             </div>
         </div>
+        <div class='content'>
+            <%@include file="ViewProducts.jsp" %>
+        </div>
         <%@include file="footer.jsp" %>
     </body>
 </html>

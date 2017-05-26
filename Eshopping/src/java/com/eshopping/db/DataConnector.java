@@ -22,25 +22,26 @@ public class DataConnector {
     private DataSource ds=null;
     private Connection con;
     
-    public DataSource getDataSource() throws SQLException, NamingException
+    public void getDataSource() throws SQLException, NamingException
     {
         System.out.println("get Datasourcemethod called");
         SQLServerDataSource dataSource=new SQLServerDataSource();
         dataSource.setUser("sa");
         dataSource.setPassword("iluVirat#100");
         dataSource.setServerName("DESKTOP-H4HBQ7U");
-        dataSource.setDatabaseName("master");
+        dataSource.setDatabaseName("Eshop");
         dataSource.setPortNumber(1433);
         con = dataSource.getConnection();
+        System.out.println("connected");
         Context ctx=new InitialContext();
-        ctx.rebind("jdbc/sql", dataSource);
-        ds=(DataSource)ctx.lookup("jdbc/sql");
-        return ds;
+        ctx.bind("jdbc/sql", dataSource);
+        
     }
     
     public void setConnection() throws NamingException, SQLException{
-        getDataSource();
-        //con=ds.getConnection();
+        Context ctx=new InitialContext();
+        ds=(DataSource)ctx.lookup("jdbc/sql");
+        Connection con=ds.getConnection("sa", "iluVIrat#100");
     }
     
     public static void main(String[] arg) throws NamingException, SQLException{
